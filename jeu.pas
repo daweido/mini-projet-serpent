@@ -15,6 +15,8 @@ begin
 	affi_cadre;
 	snake := initialiser;
 	affi_serpent(snake);
+	readkey;
+	accueil;
 end;
 
 procedure comment_jouer;

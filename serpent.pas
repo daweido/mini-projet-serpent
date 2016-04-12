@@ -53,7 +53,6 @@ begin
 		end
 		else write('*');
 		i := i+1;
-		readkey;
 		snake.tete := snake.tete^.suivant;
 	end;
 end;
