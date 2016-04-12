@@ -40,27 +40,20 @@ procedure affi_serpent(snake : viper);
 VAR
 	i,x,y,longueur : integer;
 begin
-	writeln('43');
-	longueur := snake.taille;
-	writeln('longueur : ',snake.taille);
 	i := 1;
-	while (snake.tete <> nil) and (i <= snake.taille) do begin
-		writeln('46');
+	while (snake.tete <> nil) do begin
 		x := snake.tete^.x;
 		y := snake.tete^.y;
-		writeln('46', i);
+		gotoxy(x,y);
 		if i = 1 then begin
-			gotoxy(x,y);
 			if snake.direction = 0 then write('^')
 			else if snake.direction = 1 then write('>')
 			else if snake.direction = 2 then write('è')
 			else write('<');
 		end
-		else begin
-			gotoxy(x,y);
-			write('*');
-		end;
+		else write('*');
 		i := i+1;
+		readkey;
 		snake.tete := snake.tete^.suivant;
 	end;
 end;
@@ -75,9 +68,9 @@ begin
 	init.direction := 1;
 	tmp1 := Nil;
   tmp2 := Nil;
-	x := 40;
+	x := 36;
 	y := 14;
-	while (x <> 44) do begin
+	while (x <= 40) do begin
 		tmp2 := creerNoeud(x,y);
 		tmp2^.suivant := tmp1;
 		tmp1 := tmp2;
