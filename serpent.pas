@@ -20,6 +20,10 @@ type viper = record
 
 function initialiser(): viper;
 procedure affi_serpent(snake : viper);
+function grandissement_corps(snake : viper) : viper;
+FUNCTION collision_cadre(snake : viper): BOOLEAN;
+function mouvement(snake : viper): viper;
+function collision_corps(snake : viper) : boolean;
 
 
 implementation
@@ -38,7 +42,7 @@ END;
 
 procedure affi_serpent(snake : viper);
 VAR
-	i,x,y,longueur : integer;
+	i,x,y : integer;
 begin
 	i := 1;
 	while (snake.tete <> nil) do begin
@@ -48,15 +52,103 @@ begin
 		if i = 1 then begin
 			if snake.direction = 0 then write('^')
 			else if snake.direction = 1 then write('>')
-			else if snake.direction = 2 then write('è')
+			else if snake.direction = 2 then write('v')
 			else write('<');
 		end
 		else write('*');
 		i := i+1;
+		gotoxy(1,1);
 		snake.tete := snake.tete^.suivant;
 	end;
 end;
+//////////////////////////////Maxime////////////////////////////////////////////
+FUNCTION AjoutTete(x, y : integer; tete : pnoeud) : pnoeud;
+VAR
+    tmp : pnoeud;
+BEGIN
+    tmp := creerNoeud(x,y);
+    tmp^.suivant := tete;
+    tete := tmp;
+    AjoutTete := tete;
+END;
 
+function SupFin(liste : pnoeud) : pnoeud;
+VAR
+  tmp1,tmp : pnoeud;
+  n,l : integer;
+BEGIN
+  tmp := liste;
+  tmp1 := liste;
+  n := 0;
+  l := 0;
+  WHILE (tmp^.suivant <> Nil) DO BEGIN
+    n := n+1;
+    tmp := tmp^.suivant;
+  END;
+  REPEAT
+  l := l+1;
+  tmp1 := tmp1^.suivant;
+  UNTIL (l = n-1);
+  tmp1^.suivant := NIL;
+  dispose(tmp);
+  SupFin := liste;
+END;
+
+function mouvement(snake : viper): viper;
+var
+	x,y : integer;
+begin
+	x := snake.tete^.x;
+	y := snake.tete^.y;
+	snake.tete := SupFin(snake.tete);
+	if snake.direction = 0 then snake.tete := AjoutTete(x,y-1,snake.tete)
+	else if snake.direction = 1 then snake.tete := AjoutTete(x+1,y,snake.tete)
+	else if snake.direction = 2 then snake.tete := AjoutTete(x,y+1,snake.tete)
+	else snake.tete := AjoutTete(x-1,y,snake.tete);
+	mouvement := snake;
+end;
+/////////////////////////////Mandry/////////////////////////////////////////////
+function collision_corps(snake : viper) : boolean;
+VAR
+xb, yb : INTEGER;
+colli : boolean;
+begin
+	colli := false;
+	xb := snake.tete^.x;
+	yb := snake.tete^.y;
+	snake.tete := snake.tete^.suivant;
+	IF (xb = snake.tete^.x) AND (yb = snake.tete^.y) THEN collision_corps := true;
+	while snake.tete <> Nil DO Begin
+		IF (xb = snake.tete^.x) AND (yb = snake.tete^.y) THEN begin
+			colli := TRUE;
+			break;
+		end;
+		snake.tete := snake.tete^.suivant;
+	end;
+	collision_corps := colli;
+end;
+
+function grandissement_corps(snake : viper) : viper;
+VAR
+	tmp1 : pnoeud;
+	x,y : integer;
+BEGIN
+	tmp1 := snake.tete;
+	while tmp1^.suivant <> nil do tmp1 := tmp1^.suivant;
+	x := tmp1^.x;
+	y := tmp1^.y;
+	tmp1^.suivant := creerNoeud(x,y);
+	snake.taille := snake.taille+1;
+	grandissement_corps := snake;
+end;
+
+////////////////////////////////////Mehdi///////////////////////////////////////
+FUNCTION collision_cadre(snake : viper): BOOLEAN;
+begin
+	IF (snake.tete^.x = 3) OR (snake.tete^.x = 78) OR (snake.tete^.y = 3) OR (snake.tete^.y = 24) THEN collision_cadre := true
+	ELSE collision_cadre := false;
+end;
+////////////////////////////////////////////////////////////////////////////////
 function initialiser(): viper;
 var
 	init : viper;
