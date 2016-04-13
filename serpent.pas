@@ -171,4 +171,13 @@ begin
 	initialiser := init;
 end;
 
+FUNCTION colision(snake : viper): BOOLEAN;
+begin
+	IF (snake.tete^.x = 2) OR
+		 (snake.tete^.x = 78)OR
+		 (snake.tete^.y = 3) OR
+		 (snake.tete^.y = 25) THEN colision:= vrai;
+		ELSE colision := faux;
+end;
+
 end.
