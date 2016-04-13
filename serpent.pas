@@ -38,7 +38,7 @@ END;
 
 procedure affi_serpent(snake : viper);
 VAR
-	i,x,y,longueur : integer;
+	i,x,y : integer;
 begin
 	i := 1;
 	while (snake.tete <> nil) do begin
@@ -77,6 +77,25 @@ begin
 	end;
 	init.tete := tmp2;
 	initialiser := init;
+end;
+
+function collision_corps(snake : viper) : boolean;
+VAR
+xb, yb : INTEGER;
+colli : boolean;
+begin
+	colli := false;
+	xb := snake.tete^.x;
+	yb := snake.tete^.y;
+	snake.tete := snake.tete^.suivant;
+	while snake.tete <> Nil DO Begin
+		IF ( xb = snake.tete^.x ) OR ( yb = snake.tete^.y) THEN begin
+			colli := TRUE;
+			break;
+		end;
+		snake.tete := snake.tete^.suivant;
+	end;
+	collision_corps := colli;
 end;
 
 end.
