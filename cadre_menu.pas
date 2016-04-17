@@ -11,6 +11,19 @@ procedure affiMen_1;
 procedure lancer_jeu;
 procedure affi_jouer;
 procedure premier_ecr;
+PROCEDURE affi_gameOver(score : INTEGER);
+procedure affi_modeJeu;
+procedure affi_cadre_murs(score : integer);
+procedure affi_modeCadre;
+PROCEDURE affi_gameOverHS(score : INTEGER);
+procedure affi_classement;
+procedure affi_serp_2();
+procedure affiClassement_mode;
+
+
+
+
+
 
 
 implementation
@@ -20,6 +33,7 @@ uses
 procedure affi_cadre(score : integer);
 begin
 	clrscr;
+	textcolor(10);
 	writeln('                                  Score : ',score);
 	writeln();
 	writeln('  ____________________________________________________________________________');
@@ -45,34 +59,91 @@ begin
 	writeln('  |                                                                          |');
 	writeln('  ----------------------------------------------------------------------------');
 end;
-//////////////////////////////////////Jeu du Serpent////////////////////////////
-procedure affi_serp();
+
+
+procedure affi_cadre_murs(score : integer);
 begin
-writeln('     _                  _         ____                             _');
-writeln('    | | ___ _   _    __| |_   _  / ___|  ___ _ __ _ __   ___ _ __ | |_');
-writeln(' _  | |/ _ \ | | |  / _` | | | | \___ \ / _ \ ''__| ''_ \ / _ \ ''_ \| __|');
-writeln('| |_| |  __/ |_| | | (_| | |_| |  ___) |  __/ |  | |_) |  __/ | | | |_');
-writeln(' \___/ \___|\__,_|  \__,_|\__,_| |____/ \___|_|  | .__/ \___|_| |_|\__|');
-writeln('																								 |_|');
+	clrscr;
+	textcolor(10);
+	writeln('                                  Score : ',score);
+	writeln();
+	writeln('  ____________________________________________________________________________');
+	writeln('  |                                                                          |');
+	writeln('  |                                                                          |');
+	writeln('  |                 ._____                           ______.                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |                                      |                 |');
+	writeln('  |                 |_____                            _____|                 |');
+	writeln('  |                                                                          |');
+	writeln('  |                                                                          |');
+	writeln('  |                                                                          |');
+	writeln('  ----------------------------------------------------------------------------');
+end;
+//////////////////////////////////////Jeu du Serpent////////////////////////////
+procedure affi_serp_1();
+begin
+gotoxy(6,7); writeln('     _                  _         ____                             _');
+gotoxy(6,8); writeln('    | | ___ _   _    __| |_   _  / ___|  ___ _ __ _ __   ___ _ __ | |_');
+gotoxy(6,9); writeln(' _  | |/ _ \ | | |  / _` | | | | \___ \ / _ \ ''__| ''_ \ / _ \ ''_ \| __|');
+gotoxy(6,10); writeln('| |_| |  __/ |_| | | (_| | |_| |  ___) |  __/ |  | |_) |  __/ | | | |_');
+gotoxy(6,11); writeln(' \___/ \___|\__,_|  \__,_|\__,_| |____/ \___|_|  | .__/ \___|_| |_|\__|');
+gotoxy(6,12); writeln('																			      |_|');
+end;
+
+procedure affi_serp_2();
+begin
+	ClrScr;
+gotoxy(6,1); writeln('     _                  _         ____                             _');
+gotoxy(6,2); writeln('    | | ___ _   _    __| |_   _  / ___|  ___ _ __ _ __   ___ _ __ | |_');
+gotoxy(6,3); writeln(' _  | |/ _ \ | | |  / _` | | | | \___ \ / _ \ ''__| ''_ \ / _ \ ''_ \| __|');
+gotoxy(6,4); writeln('| |_| |  __/ |_| | | (_| | |_| |  ___) |  __/ |  | |_) |  __/ | | | |_');
+gotoxy(6,5); writeln(' \___/ \___|\__,_|  \__,_|\__,_| |____/ \___|_|  | .__/ \___|_| |_|\__|');
+gotoxy(6,6); writeln('																			      |_|');
 end;
 
 
+PROCEDURE affi_gameOver(score : INTEGER);
+begin
+	clrscr;
+	textcolor(7);
+	gotoxy(15,3); writeln('  ____                         ___');
+	gotoxy(15,4); writeln(' / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __');
+	gotoxy(15,5); writeln('| |  _ / _` | ''_ ` _ \ / _ \ | | | \ \ / / _ \ ''__|');
+	gotoxy(15,6); writeln('| |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |');
+	gotoxy(15,7); writeln(' \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|');
+	WRITELN();
+	writeln('Vous avez perdu avec un score de : ',score);
+	WRITELN('Veuillez choisir l''option que vous voulez :');
+	WRITELN('(Navigation faite à l''aide des flèches ainsi que le touche ENTER)');
+	WRITELN('   1. Rejouer');
+	WRITELN('   2. Retour à l''accueil');
+	WRITELN('   3. Quitter');
+end;
 
-{
-  ____                         ___
- / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __
-| |  _ / _` | '_ ` _ \ / _ \ | | | \ \ / / _ \ '__|
-| |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |
- \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|
-
-
- ____              _
-|  _ \ ___ _ __ __| |_   _
-| |_) / _ \ '__/ _` | | | |
-|  __/  __/ | | (_| | |_| |
-|_|   \___|_|  \__,_|\__,_|
-                           
-                                                   }
+PROCEDURE affi_gameOverHS(score : INTEGER);
+begin
+	clrscr;
+	textcolor(7);
+	gotoxy(15,3); writeln('  ____                         ___');
+	gotoxy(15,4); writeln(' / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __');
+	gotoxy(15,5); writeln('| |  _ / _` | ''_ ` _ \ / _ \ | | | \ \ / / _ \ ''__|');
+	gotoxy(15,6); writeln('| |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |');
+	gotoxy(15,7); writeln(' \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|');
+	WRITELN();
+	writeln('Vous avez perdu avec un score de : ',score);
+	writeln();
+end;
 //////////////////////////////////////Commnet Jouer/////////////////////////////
 // Taille terminal horizontal : 80 charactères
 // Taille terminal vertical : 26 lignes
@@ -80,7 +151,9 @@ procedure affiCJ;
 BEGIN
 	ClrScr;
 	WRITELN();
+	textcolor(4);
 	writeln('                              -- Comment Jouer --');
+	textcolor(7);
 	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
 	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
 	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
@@ -93,6 +166,7 @@ END;
 procedure lancer_jeu;
 BEGIN
 	gotoxy(18,13);
+	textcolor(4);
 	write('Saississez une touche pour commencer à jouer');
 	gotoxy(1,1);
 END;
@@ -150,23 +224,32 @@ END;
 /////////////////////////////////menus//////////////////////////////////////////
 procedure premier_ecr;
 begin
+	textcolor(7);
 	ClrScr;
-	affi_serp;
+	affi_serp_1;
 	writeln();
 	writeln();
 	writeln();
-	writeln('Saississez une touche pour accéder à l''accueil');
+	gotoxy(18,16);writeln('Saississez une touche pour accéder à l''accueil');
+	gotoxy(1,25);
 end;
 
 PROCEDURE Bienvenue;
 BEGIN
-  ClrScr;
+	textcolor(7);
   WRITELN('Bonjour et bienvenue dans le jeu du serpent');
 END;
 
 PROCEDURE sortie;
 BEGIN
   ClrScr;
+	textcolor(7);
+	writeln();
+	writeln();
+	affi_serp_2;
+	writeln();
+	writeln();
+	writeln();
   WRITELN('Merci d''avoir joué au serpent');
   WRITELN('Créé par David RIGAUX');
   halt;
@@ -174,7 +257,8 @@ END;
 
 procedure affi_jouer;
 begin
-	ClrScr;
+	textcolor(7);
+	affi_serp_2;
 	WRITELN('Veuillez choisir rapidité avec la quelle vous voulez jouer :');
 	WRITELN('(Navigation faite à l''aide des flèches ainsi que le touche ENTER)');
 	WRITELN('   1. Lent');
@@ -182,18 +266,74 @@ begin
 	WRITELN('   3. Rapide');
 	WRITELN('   4. Très rapide');
 	WRITELN('   5. Rapidité croissante');
-	WRITELN('   6. Retour à l''accueil');
+	WRITELN('   6. Retour');
 	WRITELN('   7. Quitter');
 	WRITELN();
 end;
+
+procedure affi_modeJeu;
+begin
+textcolor(7);
+affi_serp_2;
+WRITELN('Veuillez choisir le mode de jeu avec le quel vous voulez jouer :');
+WRITELN('(Navigation faite à l''aide des flèches ainsi que le touche ENTER)');
+WRITELN('   1. Vous pouvez passer à travers le cadre');
+WRITELN('   2. Vous ne pouvez pas passer à travers le cadre');
+WRITELN('   3. Retour');
+WRITELN('   4. Quitter');
+end;
+
+procedure erreur_lecture;
+begin
+	affi_serp_2;
+	writeln();
+	writeln('Une erreur c''est produite en lisant le fichier du classement.');
+	writeln();
+	writeln('Saississez une touche pour retourner au menu précédent...');
+	readkey;
+end;
+
+procedure affiClassement_mode;
+begin
+	writeln('*(CNT : Cadre Non Traversable, CT : Cadre traversable, M : Présence de murs');
+	writeln('L : Lent, N : Normal, R : Rapide, TR : Très Rapide, C : Rapiditée croissante)');
+
+end;
+procedure affi_classement;
+begin
+clrscr;
+textcolor(7);
+gotoxy(15,1);writeln('  ____ _                                         _   ');
+gotoxy(15,2);writeln(' / ___| | __ _ ___ ___  ___ _ __ ___   ___ _ __ | |_');
+gotoxy(15,3);writeln('| |   | |/ _` / __/ __|/ _ \ ''_ ` _ \ / _ \ ''_ \| __|');
+gotoxy(15,4);writeln('| |___| | (_| \__ \__ \  __/ | | | | |  __/ | | | |_');
+gotoxy(15,5);writeln(' \____|_|\__,_|___/___/\___|_| |_| |_|\___|_| |_|\__|');
+
+end;
+
+procedure affi_modeCadre;
+begin
+textcolor(7);
+affi_serp_2;
+WRITELN('Veuillez choisir le mode de jeu avec le quel vous voulez jouer :');
+WRITELN('(Navigation faite à l''aide des flèches ainsi que le touche ENTER)');
+WRITELN('   1. Cadre sans murs');
+WRITELN('   2. Cadre avec murs');
+WRITELN('   3. Retour à l''accueil');
+WRITELN('   4. Quitter');
+end;
+
 procedure affiMen_1;
 BEGIN
+	textcolor(7);
+	affi_serp_2;
 	Bienvenue;
-	WRITELN('Veuillez choisir l''option que vous voulez:');
+	WRITELN('Veuillez choisir l''option que vous voulez :');
 	WRITELN('(Navigation faite à l''aide des flèches ainsi que le touche ENTER)');
 	WRITELN('   1. Jouer');
 	WRITELN('   2. Comment jouer');
-	WRITELN('   3. Quitter');
+	writeln('   3. Classement');
+	WRITELN('   4. Quitter');
 	WRITELN();
 	END;
 END.
