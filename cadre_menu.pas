@@ -149,17 +149,22 @@ end;
 // Taille terminal vertical : 26 lignes
 procedure affiCJ;
 BEGIN
-	ClrScr;
+	affi_serp_2;
 	WRITELN();
 	textcolor(4);
 	writeln('                              -- Comment Jouer --');
 	textcolor(7);
-	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
-	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
-	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
-	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
-	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
-	writeln('   Voici commet on joue etc etc etc etc etc etc etc etc etc ');
+	writeln('       Après avoir séléctionner le mode de jeu au quel vous voulez ');
+	writeln('       jouer, pour naviguer votre serpent il faudra vous aider des ');
+	writeln('       flèches directionnels. Selon le mode de jeu choisis vous ');
+	writeln('       avez la possibilité de passer à travers les murs, d''autre non.');
+	writeln('       Quand il y a les murs dans le cadre, il ne faut en aucun cas');
+	writeln('       entrer dans un des murs car cela vous fera perdre. Le but du');
+	writeln('       jeu est de manger le plus de pomme, et ainsi grandir et avoir');
+	writeln('       le plus de points possible, car celui la pourrait être parmis');
+	writeln('       les 10 premiers meilleurs score du jeu.');
+
+
 
 END;
 ////////////////////////////////Lancer jeu//////////////////////////////////////
