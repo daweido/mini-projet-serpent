@@ -1,11 +1,11 @@
 (Version française / French version)
 
-# Mini-Projet Tri
+# Mini-Projet Jeu du Serpent
 Ceci est un projet fait en première année du cycle préparatoire, codé en [Pascal](https://www.freepascal.org/). Le projet est le jeu du serpent prenant en compte les collisions avec les murs et le corps de la vipère elle-même. Un classement générale est effectué grâce à un fichier `.txt`. Plusieurs niveaux de vitesses sont présents avec la possibilité d'avoir une vitesse croissante en fonction du score.
 
 (Version anglaise / English version)
 
-# Sort mini-project
+# Snake Game mini-project
 This is a project made in first year of prepatory class coded in [Pascal](https://www.freepascal.org/). The project is a snake game taking into account collisions with the walls of the board, as well as with the snake's body. The players' ranking can be found in a `.txt` file. Several levels of difficulty exist with the possibility of having the speed increase according to the score.
 
 # License (MIT)
